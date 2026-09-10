@@ -8,7 +8,7 @@ import TechMarquee from "@/components/ui/TechMarquee";
 
 export default function Hero() {
   return (
-    <Section className="flex min-h-screen items-center pt-30 lg:pt-30">
+    <Section id="home" className="flex min-h-screen items-center pt-30 lg:pt-30">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 mb-20">
           {/* Profile */}
@@ -26,8 +26,8 @@ export default function Hero() {
               </div>
 
               <div className="mt-5 flex items-center justify-center gap-2 text-center">
-                <h2 className="text-xl font-medium tracking-tight rounded-full border border-(--border) bg-white/70 px-6 py-3.5 transition-all hover:-translate-y-0.5 hover:bg-white">
-                  Hi, I'm Mubarak.
+                <h2 className="text-xl font-medium tracking-tight rounded-full border border-(--border) bg-white/70 px-8 py-2.5 transition-all hover:-translate-y-0.5 hover:bg-white">
+                  Hi, I'm Mubarak
                 </h2>
               </div>
             </div>

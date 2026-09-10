@@ -10,7 +10,7 @@ export default function Navbar() {
         <Link
           href="/"
           className="ml-5 text-xl items-center gap-2 font-semibold tracking-tight">
-          <span></span>
+          <span>Mubarak</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

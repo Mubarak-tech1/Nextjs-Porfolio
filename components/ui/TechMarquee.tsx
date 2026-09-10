@@ -34,6 +34,10 @@ const technologies = [
     name: "Git",
     image: "/images/technologies/git.svg",
   },
+  {
+    name: "Github",
+    image: "/images/technologies/github.svg",
+  },
 ];
 
 export default function TechMarquee() {
