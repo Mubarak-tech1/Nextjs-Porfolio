@@ -11,7 +11,7 @@ export default function Contact() {
             Let's Talk
           </p>
 
-          <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-5xl lg:text-6xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] md:text-5xl lg:text-6xl">
             Have a problem worth solving? Let's talk.
           </h2>
 

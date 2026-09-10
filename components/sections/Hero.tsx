@@ -49,7 +49,7 @@ export default function Hero() {
 
             <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:gap-6">
               <Link
-                href="#work"
+                href="#project"
                 className="flex items-center justify-center rounded-full bg-(--foreground) px-6 py-3.5 text-[15px] font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg">
                 View My Work
               </Link>

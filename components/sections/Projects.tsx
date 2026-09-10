@@ -32,7 +32,7 @@ export default function Projects() {
       <Container>
         {/* Section intro */}
         <div className="max-w-3xl justify-center text-center lg:mx-auto lg:text-center">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text- ">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-(--accent) ">
             Selected Project
           </p>
 
