@@ -1,8 +1,53 @@
+"use client";
+import { useState } from "react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
+import Toast from "@/components/ui/Toast";
 
 export default function Contact() {
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  
+ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+   event.preventDefault();
+
+   const form = event.currentTarget;
+
+   setStatus("loading");
+
+   const formData = new FormData(form);
+
+   const data = {
+     name: formData.get("name"),
+     email: formData.get("email"),
+     message: formData.get("message"),
+   };
+
+
+   try{
+    const response = await fetch("/api/contact", {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json",
+     },
+     body: JSON.stringify(data),
+   });
+
+   const result = await response.json();
+
+   console.log("Result:", result);
+
+   if (!response.ok) {
+     setStatus("error");
+     return;
+   } 
+     setStatus("success");
+     form.reset();
+   }catch (error) {
+      setStatus("error");
+    }
+ };
+
   return (
     <Section id="contact">
       <Container>
@@ -11,7 +56,7 @@ export default function Contact() {
             Let's Talk
           </p>
 
-          <h2 className="mt-5 text-3xl font-semibold tracking-[-0.04em] md:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] md:text-5xl lg:text-5xl">
             Have a problem worth solving? Let's talk.
           </h2>
 
@@ -23,7 +68,9 @@ export default function Contact() {
         </div>
 
         {/* Right */}
-        <form className="space-y-6 items-center mt-10 max-w-xl mx-auto shadow-xl px-6 py-8 rounded-2xl border border-(--border) bg-white/50">
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-6 items-center mt-10 max-w-xl mx-auto shadow-xl px-6 py-8 rounded-2xl border border-(--border) bg-white/50">
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="text-sm font-bold">
               Name
@@ -71,9 +118,22 @@ export default function Contact() {
 
           <Button
             type="submit"
-            className="bg-(--accent) text-(--foreground) hover:bg-(--foreground) hover:text-white">
+            variant="primary"
+            loading={status === "loading"}>
             Send message
           </Button>
+          {status === "success" && (
+            <Toast type="success">
+              Your message has been sent successfully. I'll get back to you as
+              soon as possible.
+            </Toast>
+          )}
+
+          {status === "error" && (
+            <Toast type="error">
+              Something went wrong while sending your message. Please try again.
+            </Toast>
+          )}
         </form>
       </Container>
     </Section>

@@ -23,16 +23,16 @@ export default function About() {
   return (
     <Section id="about">
       <Container>
-        <div className="max-w-3xl justify-center text-center lg:mx-auto lg:text-center">
+        <div className="max-w-4xl justify-center text-center lg:mx-auto lg:text-center">
           <p className="text-[16px] font-medium uppercase tracking-[0.2em] text-(--accent)">
-            About   Approach
+            About Approach
           </p>
 
-          <h2 className="mt-6 text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-5xl lg:text-5xl">
             Good digital experiences start with good questions.
           </h2>
 
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-(--muted)">
+          <p className="mt-8 text-lg leading-8 text-(--muted)">
             I don't believe in building interfaces just because they look good.
             Before I write a component, I want to understand the person using
             it, the problem we're solving, and what the experience needs to

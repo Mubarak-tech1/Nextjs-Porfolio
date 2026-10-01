@@ -1,11 +1,13 @@
 import { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
+
+
 export default function Button({
   children,
   variant = "primary",
-  size = "md",
   loading = false,
+  size = "md",
   leftIcon,
   rightIcon,
   fullWidth = false,
@@ -13,6 +15,7 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps) {
+
   return (
     <button
       disabled={disabled || loading}
@@ -25,10 +28,7 @@ export default function Button({
       )}
       {...props}>
       {loading ? (
-        <>
-          {/* Spinner comes later */}
-          Loading...
-        </>
+        "Sending..."
       ) : (
         <>
           {leftIcon}
@@ -40,42 +40,40 @@ export default function Button({
   );
 }
 
-export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "outline"
+  | "ghost"
+
 
 export type ButtonSize = "sm" | "md" | "lg";
 
+
+
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
-
   size?: ButtonSize;
-
   loading?: boolean;
-
   leftIcon?: ReactNode;
-
   rightIcon?: ReactNode;
-
   fullWidth?: boolean;
-
   children: ReactNode;
+ 
 }
 
 
 const variants = {
-  primary: "bg-violet-600 text-white hover:bg-violet-500",
-
+  primary:
+    "bg-(--accent) text-(--foreground) hover:bg-(--foreground) hover:text-white",
   secondary: "bg-white/10 text-white hover:bg-white/20",
-
   outline: "border border-white/20 bg-transparent hover:bg-white/10",
-
   ghost: "hover:bg-white/10",
 };
 
 const sizes = {
   sm: "h-9 px-4 text-sm",
-
   md: "h-11 px-6",
-
   lg: "h-14 px-8 text-lg",
 };
 
@@ -89,8 +87,6 @@ font-medium
 transition-all
 duration-300
 focus:outline-none
-focus:ring-2
-focus:ring-violet-500
 disabled:pointer-events-none
 disabled:opacity-50
 `;

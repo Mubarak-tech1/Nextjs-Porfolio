@@ -36,7 +36,7 @@ export default function Projects() {
             Selected Project
           </p>
 
-          <h2 className="mt-5 text-4xl font-semibold tracking-[-0.04em] md:text-5xl lg:text-6xl">
+          <h2 className="mt-4 text-4xl font-semibold tracking-[-0.04em] md:text-5xl lg:text-5xl">
             Problems worth solving.
           </h2>
 

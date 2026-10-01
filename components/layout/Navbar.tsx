@@ -13,21 +13,21 @@ export default function Navbar() {
           <span>Mubarak</span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 md:flex lg:mx-10">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[15px] text-(--muted) transition-colors hover:text-(--foreground)">
+              className="text-[17px] text-(--muted) transition-colors hover:text-(--foreground)">
               {item.label}
             </Link>
           ))}
 
-          <Link
+          {/* <Link
             href="#contact"
             className="rounded-full flex items-center gap-2 bg-(--foreground) px-5 py-2.5 text-[15px] font-medium text-white transition-transform hover:-translate-y-0.5">
             Let's Talk <ArrowRight className="text-(--accent)" />
-          </Link>
+          </Link> */}
         </div>
 
         <MobileMenu />
