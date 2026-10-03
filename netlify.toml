@@ -1,0 +1,4 @@
+[build.environment]
+  # Turbopack's persistent build cache records server-side env values (e.g. RESEND_API_KEY).
+  # These cache files are internal build artifacts and are never deployed, so skip them in secrets scanning.
+  SECRETS_SCAN_OMIT_PATHS = ".netlify/.next/cache/**,.next/cache/**"
