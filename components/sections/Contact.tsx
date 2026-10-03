@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { AnimatePresence } from "motion/react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
@@ -122,18 +123,26 @@ export default function Contact() {
             loading={status === "loading"}>
             Send message
           </Button>
-          {status === "success" && (
-            <Toast type="success">
-              Your message has been sent successfully. I'll get back to you as
-              soon as possible.
-            </Toast>
-          )}
 
-          {status === "error" && (
-            <Toast type="error">
-              Something went wrong while sending your message. Please try again.
-            </Toast>
-          )}
+          <AnimatePresence>
+            {status === "success" && (
+              <Toast 
+              type="success"
+               onClose={() => setStatus("idle")}>
+                Your message has been sent successfully. I'll get back to you as
+                soon as possible.
+              </Toast>
+            )}
+
+            {status === "error" && (
+              <Toast 
+              type="error"
+               onClose={() => setStatus("idle")}>
+                Something went wrong while sending your message. Please try
+                again.
+              </Toast>
+            )}
+          </AnimatePresence>
         </form>
       </Container>
     </Section>
