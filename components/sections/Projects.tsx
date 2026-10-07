@@ -1,7 +1,58 @@
+"use client"
+import { motion, type Variants } from "motion/react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { Link } from "lucide-react";
 import { BsGithub } from "react-icons/bs";
+
+const introVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const leftCardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -100,
+    rotate: -6,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    transition: {
+      duration: 0.9,
+      ease: "easeOut",
+    },
+  },
+};
+
+const rightCardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: 100,
+    rotate: 6,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    rotate: 0,
+    transition: {
+      duration: 0.9,
+      ease: "easeOut",
+    },
+  },
+};
 
 const projects = [
   {
@@ -28,10 +79,15 @@ const projects = [
 
 export default function Projects() {
   return (
-    <Section id="project">
+    <Section id="project" className="bg-white">
       <Container>
         {/* Section intro */}
-        <div className="max-w-3xl justify-center text-center lg:mx-auto lg:text-center">
+        <motion.div
+          variants={introVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          className="max-w-3xl justify-center text-center lg:mx-auto lg:text-center">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-(--accent) ">
             Selected Project
           </p>
@@ -44,16 +100,20 @@ export default function Projects() {
             A selection of digital experiences I've designed and built with
             intention.
           </p>
-        </div>
+        </motion.div>
 
         {/* Projects */}
         <div className="mt-8 grid gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <article
+          {projects.map((project, index) => (
+            <motion.article
               key={project.number}
+              variants={index === 0 ? leftCardVariants : rightCardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
               className="group overflow-hidden rounded-2xl border border-(--border) ">
               {/* Project visual */}
-              <div className="relative aspect-[16/7] overflow-hidden bg-[#ebe8e1]">
+              <div className="relative aspect-16/7 overflow-hidden bg-[#ebe8e1]">
                 {project.image ? (
                   <img
                     src={project.image}
@@ -119,7 +179,7 @@ export default function Projects() {
                   </div>
                 )}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </Container>

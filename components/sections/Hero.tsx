@@ -35,17 +35,15 @@ export default function Hero() {
   return (
     <Section
       id="home"
-      className="flex min-h-screen items-center pt-30 lg:pt-30">
+      className="bg-white flex min-h-screen items-center pt-30 lg:pt-30">
       <Container>
         <div className="grid items-center gap-12 lg:grid-cols-2 mb-20">
           {/* Profile */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{
-              duration: 0.9,
-              ease: "easeOut",
-            }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{once:false, amount:0.3}}
+            transition={{ duration: 0.9, ease: "easeOut",}}
             className="order-1 mx-auto w-full max-w-sm lg:order-2 lg:ml-auto">
             <div className="relative">
               <div className="overflow-hidden rounded-b-full border border-black/5 bg-white/50 shadow-xl">
@@ -71,7 +69,8 @@ export default function Hero() {
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{once:false, amount:0.3 }}
             className="order-2 lg:order-1 text-center lg:text-left">
             <motion.h1
               variants={itemVariants}
