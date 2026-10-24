@@ -20,35 +20,16 @@ const introVariants: Variants = {
   },
 };
 
-const leftCardVariants: Variants = {
+const cardVariants: Variants = {
   hidden: {
     opacity: 0,
-    x: -100,
-    rotate: -6,
+    y: 24,
   },
   visible: {
     opacity: 1,
-    x: 0,
-    rotate: 0,
+    y: 0,
     transition: {
-      duration: 0.9,
-      ease: "easeOut",
-    },
-  },
-};
-
-const rightCardVariants: Variants = {
-  hidden: {
-    opacity: 0,
-    x: 100,
-    rotate: 6,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    rotate: 0,
-    transition: {
-      duration: 0.9,
+      duration: 0.65,
       ease: "easeOut",
     },
   },
@@ -107,10 +88,13 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.article
               key={project.number}
-              variants={index === 0 ? leftCardVariants : rightCardVariants}
+              variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{
+                delay: index * 0.12,
+              }}
               className="group overflow-hidden rounded-2xl border border-(--border) ">
               {/* Project visual */}
               <div className="relative aspect-16/7 overflow-hidden bg-[#ebe8e1]">
