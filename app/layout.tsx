@@ -8,6 +8,11 @@ import Background from "@/components/layout/Background";
 export const metadata: Metadata = {
   metadataBase: new URL("https://adiomubarakadebukola.netlify.app"),
 
+
+   verification: {
+    google: "yh-p0P4eyZcrPHvIhgugS_rFrdPtlVdhXd0pHDm9kLc",
+  },
+  
   title: {
     default: "Adio Mubarak Adebukola | Website Developer",
     template: "%s | Adio Mubarak Adebukola",
