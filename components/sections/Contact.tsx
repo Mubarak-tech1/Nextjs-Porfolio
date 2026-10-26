@@ -9,45 +9,49 @@ import Toast from "@/components/ui/Toast";
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   
- const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-   event.preventDefault();
+ 
+const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
 
-   const form = event.currentTarget;
+  const form = event.currentTarget;
+  const formData = new FormData(form);
 
-   setStatus("loading");
+  const data = {
+    name: String(formData.get("name") ?? "").trim(),
+    email: String(formData.get("email") ?? "").trim(),
+    message: String(formData.get("message") ?? "").trim(),
+  };
 
-   const formData = new FormData(form);
+  if (!data.name || !data.email || !data.message) {
+    setStatus("error");
+    return;
+  }
 
-   const data = {
-     name: formData.get("name"),
-     email: formData.get("email"),
-     message: formData.get("message"),
-   };
+  setStatus("loading");
 
-
-   try{
+  try {
     const response = await fetch("/api/contact", {
-     method: "POST",
-     headers: {
-       "Content-Type": "application/json",
-     },
-     body: JSON.stringify(data),
-   });
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
-   const result = await response.json();
+    const result = await response.json().catch(() => null);
 
-   console.log("Result:", result);
-
-   if (!response.ok) {
-     setStatus("error");
-     return;
-   } 
-     setStatus("success");
-     form.reset();
-   }catch (error) {
+    if (!response.ok || result?.success !== true) {
       setStatus("error");
+      return;
     }
- };
+
+    form.reset();
+    setStatus("success");
+  } catch {
+    setStatus("error");
+  }
+};
+
 
   return (
     <Section id="contact">
@@ -118,6 +122,8 @@ export default function Contact() {
           </div>
 
           <Button
+            aria-live="polite"
+            aria-atomic="true"
             type="submit"
             variant="primary"
             loading={status === "loading"}>
@@ -126,18 +132,14 @@ export default function Contact() {
 
           <AnimatePresence>
             {status === "success" && (
-              <Toast 
-              type="success"
-               onClose={() => setStatus("idle")}>
+              <Toast type="success" onClose={() => setStatus("idle")}>
                 Your message has been sent successfully. I'll get back to you as
                 soon as possible.
               </Toast>
             )}
 
             {status === "error" && (
-              <Toast 
-              type="error"
-               onClose={() => setStatus("idle")}>
+              <Toast type="error" onClose={() => setStatus("idle")}>
                 Something went wrong while sending your message. Please try
                 again.
               </Toast>

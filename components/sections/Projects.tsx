@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import { motion, type Variants } from "motion/react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
@@ -99,9 +100,12 @@ export default function Projects() {
               {/* Project visual */}
               <div className="relative aspect-16/7 overflow-hidden bg-[#ebe8e1]">
                 {project.image ? (
-                  <img
+                  <Image
                     src={project.image}
                     alt={`${project.title} project preview`}
+                    width={1200}
+                    height={525}
+                    sizes="(max-width: 767px) 100vw, 50vw"
                     className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                   />
                 ) : (
