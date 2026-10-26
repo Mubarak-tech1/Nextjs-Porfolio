@@ -8,11 +8,10 @@ import Background from "@/components/layout/Background";
 export const metadata: Metadata = {
   metadataBase: new URL("https://adiomubarakadebukola.netlify.app"),
 
-
-   verification: {
+  verification: {
     google: "yh-p0P4eyZcrPHvIhgugS_rFrdPtlVdhXd0pHDm9kLc",
   },
-  
+
   title: {
     default: "Adio Mubarak Adebukola | Website Developer",
     template: "%s | Adio Mubarak Adebukola",
@@ -35,6 +34,14 @@ export const metadata: Metadata = {
     description:
       "Thoughtful digital experiences built around real problems, combining frontend engineering, UX thinking, and conversion-focused strategy.",
     locale: "en_NG",
+    images: [
+      {
+        url: "/images/Portfolio_Banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Adio Mubarak, Web Developer at SpecialSpace",
+      },
+    ],
   },
 
   robots: {
