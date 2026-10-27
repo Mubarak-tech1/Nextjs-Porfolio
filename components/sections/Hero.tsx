@@ -19,7 +19,7 @@ export default function Hero() {
               Adio Mubarak
             </h1>
 
-            <p className="mt-5 max-w-2xl text-[16px] lg:text-xl  font-normal leading-snug tracking-tight">
+            <p className="mt-5 max-w-2xl text-[18px] lg:text-xl  font-normal leading-snug tracking-tight">
               <span className="text-(--accent)">Frontend Developer</span>{" "}
               building responsive websites and modern web applications for
               businesses and individuals.
